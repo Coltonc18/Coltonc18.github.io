@@ -6,21 +6,22 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   // Replace with custom domain later
   site: 'https://coltonc18.github.io',
-  
-  base: '/', 
-  
+
+  base: '/',
+
   integrations: [
-    react(), 
+    react(),
     tailwind()
   ],
-  
+
   output: 'static',
-  
+
   vite: {
     resolve: {
       alias: {
         '@': '/src',
       },
+      dedupe: ['react', 'react-dom'],
     },
   },
 });
