@@ -2,6 +2,7 @@
 import '../components/framer/styles.css';
 import FramerNav from '../components/FramerNav.tsx';
 import FramerFooter from '../components/FramerFooter.tsx';
+import ThemeToggle from '../components/ThemeToggle.tsx';
 
 interface Props {
   title?: string;
@@ -27,6 +28,7 @@ const { title = 'Colton Carroll' } = Astro.props;
   </head>
   <body>
     <FramerNav client:only="react" />
+    <ThemeToggle client:load />
     <slot />
     <FramerFooter client:only="react" />
   </body>

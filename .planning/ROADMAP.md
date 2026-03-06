@@ -45,13 +45,13 @@ Plans:
   3. About page displays Colton's real background and skillset (no skills percentage bars)
   4. Dark mode toggle switches the site between light and dark, and the preference persists across page loads
   5. A 404 page renders for unknown routes
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 02-01: Wire Navigation and Footer components across all pages
-- [ ] 02-02: Build Home page with real content
-- [ ] 02-03: Build About page with real content
-- [ ] 02-04: Implement dark mode toggle with localStorage persistence
+- [ ] 02-01-PLAN.md — Spike Framer CDN integration, wire Layout.astro shell (Nav, Footer, FOUC script, title prop), create 404 page
+- [ ] 02-02-PLAN.md — Build Home page with real name, tagline, social links, and CTA navigation
+- [ ] 02-03-PLAN.md — Build About page with real bio and skills, no percentage bars
+- [ ] 02-04-PLAN.md — Implement dark mode toggle (MCP inspect Nav, ThemeToggle fallback if needed)
 
 ### Phase 3: Work / Projects
 **Goal**: Visitors can browse Colton's projects and view individual project detail pages — with no dead-end links
@@ -92,6 +92,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 1/2 | In Progress|  |
-| 2. Core Pages | 0/4 | Not started | - |
+| 2. Core Pages | 1/4 | In Progress|  |
 | 3. Work / Projects | 0/2 | Not started | - |
 | 4. SEO and Deployment | 0/2 | Not started | - |

@@ -16,10 +16,10 @@
 
 ### Navigation & Layout
 
-- [ ] **NAV-01**: Top Navigation Framer component renders on all pages via CDN insertUrl import (`https://framer.com/m/Top-Navigation-XPU7n1.js`) with `client:load` directive
-- [ ] **NAV-02**: Footer Framer component renders on all pages via CDN insertUrl import (`https://framer.com/m/Footer-3Fy7ch.js`) with `client:load` directive
+- [x] **NAV-01**: Top Navigation Framer component renders on all pages via CDN insertUrl import (`https://framer.com/m/Top-Navigation-XPU7n1.js`) with `client:load` directive
+- [x] **NAV-02**: Footer Framer component renders on all pages via CDN insertUrl import (`https://framer.com/m/Footer-3Fy7ch.js`) with `client:load` directive
 - [ ] **NAV-03**: Nav links route correctly to Home, About, and Work pages
-- [ ] **NAV-04**: 404 page renders for unknown routes
+- [x] **NAV-04**: 404 page renders for unknown routes
 
 ### Home Page
 
@@ -46,7 +46,7 @@
 
 - [ ] **DARK-01**: Dark mode toggle in Nav switches the `dark` class on the `<html>` element
 - [ ] **DARK-02**: Framer color styles (light/dark CSS variables) respond correctly to the `dark` class
-- [ ] **DARK-03**: Dark mode preference persists across page navigation (localStorage)
+- [x] **DARK-03**: Dark mode preference persists across page navigation (localStorage)
 
 ### SEO & Meta
 
@@ -102,10 +102,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-04 | Phase 1 — Foundation | Complete |
 | FOUND-05 | Phase 1 — Foundation | Complete |
 | FOUND-06 | Phase 1 — Foundation | Complete |
-| NAV-01 | Phase 2 — Core Pages | Pending |
-| NAV-02 | Phase 2 — Core Pages | Pending |
+| NAV-01 | Phase 2 — Core Pages | Complete |
+| NAV-02 | Phase 2 — Core Pages | Complete |
 | NAV-03 | Phase 2 — Core Pages | Pending |
-| NAV-04 | Phase 2 — Core Pages | Pending |
+| NAV-04 | Phase 2 — Core Pages | Complete |
 | HOME-01 | Phase 2 — Core Pages | Pending |
 | HOME-02 | Phase 2 — Core Pages | Pending |
 | HOME-03 | Phase 2 — Core Pages | Pending |
@@ -115,7 +115,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ABOUT-03 | Phase 2 — Core Pages | Pending |
 | DARK-01 | Phase 2 — Core Pages | Pending |
 | DARK-02 | Phase 2 — Core Pages | Pending |
-| DARK-03 | Phase 2 — Core Pages | Pending |
+| DARK-03 | Phase 2 — Core Pages | Complete |
 | WORK-01 | Phase 3 — Work / Projects | Pending |
 | WORK-02 | Phase 3 — Work / Projects | Pending |
 | WORK-03 | Phase 3 — Work / Projects | Pending |
