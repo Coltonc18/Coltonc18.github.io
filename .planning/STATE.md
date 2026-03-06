@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 02-core-pages-01-PLAN.md
-last_updated: "2026-03-06T20:42:56.630Z"
+stopped_at: "Checkpoint: 02-02 Task 2 human-verify"
+last_updated: "2026-03-06T20:47:17.788Z"
 last_activity: 2026-03-04 — Roadmap created
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 6
-  completed_plans: 3
+  completed_plans: 4
   percent: 0
 ---
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 4 | 3 tasks | 3 files |
 | Phase 02-core-pages P01 | 3 | 2 tasks | 5 files |
+| Phase 02-core-pages P02 | 5 | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,8 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: tailwind.config.cjs over .js: package.json type:module makes .js ESM; module.exports in ESM is empty — .cjs extension forces CommonJS loading
 - [Phase 02-core-pages]: Use client:only='react' not client:load for Framer CDN components — skips SSR to avoid ERR_UNSUPPORTED_ESM_URL_SCHEME at Node.js build time
 - [Phase 02-core-pages]: React.lazy URL in named function with vite-ignore — prevents Rollup static analysis and defers browser-native HTTPS ESM loading
+- [Phase 02-core-pages]: No Framer Home CDN insertUrl exists — used HTML hero section with Framer CSS tokens as fallback (plan-documented fallback path)
+- [Phase 02-core-pages]: FramerSocialIcon uses client:only=react to match established CDN component pattern
 
 ### Pending Todos
 
@@ -77,6 +80,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-06T20:42:56.627Z
-Stopped at: Completed 02-core-pages-01-PLAN.md
+Last session: 2026-03-06T20:47:17.785Z
+Stopped at: Checkpoint: 02-02 Task 2 human-verify
 Resume file: None

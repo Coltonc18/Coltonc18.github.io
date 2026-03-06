@@ -92,6 +92,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 1/2 | In Progress|  |
-| 2. Core Pages | 1/4 | In Progress|  |
+| 2. Core Pages | 2/4 | In Progress|  |
 | 3. Work / Projects | 0/2 | Not started | - |
 | 4. SEO and Deployment | 0/2 | Not started | - |

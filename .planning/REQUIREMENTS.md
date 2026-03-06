@@ -18,15 +18,15 @@
 
 - [x] **NAV-01**: Top Navigation Framer component renders on all pages via CDN insertUrl import (`https://framer.com/m/Top-Navigation-XPU7n1.js`) with `client:load` directive
 - [x] **NAV-02**: Footer Framer component renders on all pages via CDN insertUrl import (`https://framer.com/m/Footer-3Fy7ch.js`) with `client:load` directive
-- [ ] **NAV-03**: Nav links route correctly to Home, About, and Work pages
+- [x] **NAV-03**: Nav links route correctly to Home, About, and Work pages
 - [x] **NAV-04**: 404 page renders for unknown routes
 
 ### Home Page
 
-- [ ] **HOME-01**: Home page (`/`) renders the Framer Home page design
-- [ ] **HOME-02**: Headline and intro text updated to reflect Colton's real name and tagline
-- [ ] **HOME-03**: Social media links (GitHub, LinkedIn, etc.) updated to Colton's real profiles
-- [ ] **HOME-04**: Call-to-action links route to correct pages (Work, About, or external)
+- [x] **HOME-01**: Home page (`/`) renders the Framer Home page design
+- [x] **HOME-02**: Headline and intro text updated to reflect Colton's real name and tagline
+- [x] **HOME-03**: Social media links (GitHub, LinkedIn, etc.) updated to Colton's real profiles
+- [x] **HOME-04**: Call-to-action links route to correct pages (Work, About, or external)
 
 ### About Page
 
@@ -104,12 +104,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUND-06 | Phase 1 — Foundation | Complete |
 | NAV-01 | Phase 2 — Core Pages | Complete |
 | NAV-02 | Phase 2 — Core Pages | Complete |
-| NAV-03 | Phase 2 — Core Pages | Pending |
+| NAV-03 | Phase 2 — Core Pages | Complete |
 | NAV-04 | Phase 2 — Core Pages | Complete |
-| HOME-01 | Phase 2 — Core Pages | Pending |
-| HOME-02 | Phase 2 — Core Pages | Pending |
-| HOME-03 | Phase 2 — Core Pages | Pending |
-| HOME-04 | Phase 2 — Core Pages | Pending |
+| HOME-01 | Phase 2 — Core Pages | Complete |
+| HOME-02 | Phase 2 — Core Pages | Complete |
+| HOME-03 | Phase 2 — Core Pages | Complete |
+| HOME-04 | Phase 2 — Core Pages | Complete |
 | ABOUT-01 | Phase 2 — Core Pages | Pending |
 | ABOUT-02 | Phase 2 — Core Pages | Pending |
 | ABOUT-03 | Phase 2 — Core Pages | Pending |

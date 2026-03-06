@@ -25,6 +25,14 @@ const { title = 'Colton Carroll' } = Astro.props;
       })();
     </script>
     <title>{title}</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--framer-color-bg-primary);
+        color: var(--framer-color-text-primary);
+      }
+    </style>
   </head>
   <body>
     <FramerNav client:only="react" />
