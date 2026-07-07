@@ -1,43 +1,67 @@
 ---
-import '../components/framer/styles.css';
-import FramerNav from '../components/FramerNav.tsx';
-import FramerFooter from '../components/FramerFooter.tsx';
-import ThemeToggle from '../components/ThemeToggle.tsx';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import { identity } from '../data/site';
 
 interface Props {
   title?: string;
 }
 
-const { title = 'Colton Carroll' } = Astro.props;
+const { title = `${identity.name} | Software Engineer` } = Astro.props;
+const updated = new Date().toISOString().slice(0, 7); // build date, YYYY-MM
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script is:inline>
-      (function () {
-        var stored = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        }
-      })();
-    </script>
+    <meta name="description" content={identity.blurb} />
     <title>{title}</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        background: var(--framer-color-bg-primary);
-        color: var(--framer-color-text-primary);
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
       }
-    </style>
+    </script>
   </head>
   <body>
-    <FramerNav client:only="react" />
-    <ThemeToggle client:load />
-    <slot />
-    <FramerFooter client:only="react" />
+    <div class="wrap">
+      <nav>
+        <a href="/" class="brand">colton.carroll</a>
+        <ul>
+          <li><a href={identity.resume} target="_blank">resume</a></li>
+          <li><a href={identity.github} target="_blank" rel="noopener">github</a></li>
+          <li><a href={identity.linkedin} target="_blank" rel="noopener">linkedin</a></li>
+          <li><button id="theme-btn" aria-label="Toggle dark mode">◐</button></li>
+        </ul>
+      </nav>
+      <slot />
+      <footer>
+        <span>{identity.location} · <a href={`mailto:${identity.email}`}>{identity.email}</a></span>
+        <span>last updated {updated}</span>
+      </footer>
+    </div>
+    <script is:inline>
+      document.getElementById('theme-btn').addEventListener('click', () => {
+        const dark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>

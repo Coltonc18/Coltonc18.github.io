@@ -1,183 +1,124 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import FramerSocialIcon from '../components/FramerSocialIcon.tsx';
+import { identity, projects, experience, education, skills } from '../data/site';
+
+// Any image referenced in site.ts just needs to exist in src/assets/.
+const assets = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true }
+);
+const img = (name?: string) => (name ? assets[`../assets/${name}`]?.default : undefined);
+
+const portrait = img(identity.portrait);
+const [firstName, ...restName] = identity.name.split(' ');
 ---
-<Layout title="Colton Carroll | Software Engineer">
-  <main class="home-page">
+
+<Layout>
+  <main>
     <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-name">Colton Carroll</h1>
-        <p class="hero-tagline">Software Engineer</p>
-        <p class="hero-description">
-          Building fast, reliable software with a focus on clean code and great user experiences.
-        </p>
-        <div class="hero-actions">
-          <a href="/work" class="cta-primary">View Work</a>
-          <a href="/about" class="cta-secondary">About Me</a>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>
+            {firstName}<br /><span class="outline">{restName.join(' ')}</span>
+          </h1>
+          <p class="tagline">{identity.tagline}</p>
+          <p class="blurb">{identity.blurb}</p>
+          <div class="links">
+            <a href={`mailto:${identity.email}`}>email</a>
+            <a href={identity.github} target="_blank" rel="noopener">github</a>
+            <a href={identity.linkedin} target="_blank" rel="noopener">linkedin</a>
+            <a href={identity.resume} target="_blank">resume ↓</a>
+          </div>
         </div>
-        <div class="hero-social">
-          <FramerSocialIcon
-            link="https://github.com/Coltonc18"
-            icon="github"
-            client:only="react"
-          />
-          <FramerSocialIcon
-            link="https://www.linkedin.com/in/colton-carroll/"
-            icon="linkedin"
-            client:only="react"
-          />
-        </div>
-        <!-- Accessible fallback social links always present in DOM -->
-        <div class="hero-social-fallback" aria-label="Social media links">
-          <a href="https://github.com/Coltonc18" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
-          <a href="https://www.linkedin.com/in/colton-carroll/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
-        </div>
+        <figure class="portrait">
+          <div class="frame">
+            {
+              portrait ? (
+                <Image src={portrait} alt={identity.name} widths={[400, 800]} sizes="(max-width: 700px) 60vw, 300px" />
+              ) : (
+                <div class="portrait-placeholder mono">
+                  <span>+</span>
+                  <p>
+                    portrait
+                    <br />
+                    4:5 · ≥1000px
+                    <br />
+                    src/assets/{identity.portrait}
+                  </p>
+                </div>
+              )
+            }
+          </div>
+          <figcaption class="mono">fig. 01 — {identity.location.toLowerCase()}</figcaption>
+        </figure>
       </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-label reveal"><b>01</b> — Projects</p>
+      {
+        projects.map((p) => {
+          const shot = img(p.image);
+          return (
+            <article class="entry reveal">
+              <div class="entry-head">
+                <h3>{p.link ? <a href={p.link} target="_blank" rel="noopener">{p.name}</a> : p.name}</h3>
+                <span class="period">{p.period}</span>
+              </div>
+              <ul class="tags">
+                {p.stack.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+              {shot && (
+                <figure class="entry-figure">
+                  <Image src={shot} alt={p.name} widths={[700, 1400]} sizes="(max-width: 44rem) 100vw, 40rem" />
+                </figure>
+              )}
+              <p class="desc">{p.description}</p>
+            </article>
+          );
+        })
+      }
+    </section>
+
+    <section id="experience">
+      <p class="section-label reveal"><b>02</b> — Experience</p>
+      {
+        experience.map((e) => (
+          <article class="entry reveal">
+            <div class="entry-head">
+              <h3>{e.role}</h3>
+              <span class="period">{e.period}</span>
+            </div>
+            <p class="org">{e.org}</p>
+            <p class="desc">{e.description}</p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section id="education">
+      <p class="section-label reveal"><b>03</b> — Education & Skills</p>
+      <article class="entry reveal">
+        <div class="entry-head">
+          <h3>{education.school}</h3>
+          <span class="period">{education.period}</span>
+        </div>
+        <p class="edu-meta">{education.degree} · GPA {education.gpa}</p>
+        <p class="desc">Coursework: {education.coursework.join(', ')}</p>
+      </article>
+      <dl class="reveal">
+        {
+          Object.entries(skills).map(([group, items]) => (
+            <div class="skills-row">
+              <dt>{group}</dt>
+              <dd>{items.join(', ')}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </section>
   </main>
 </Layout>
-
-<style>
-  .home-page {
-    min-height: calc(100vh - 120px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 1.5rem;
-  }
-
-  .hero {
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .hero-name {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #0d0d0d);
-    margin: 0;
-    line-height: 1.1;
-  }
-
-  .hero-tagline {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    font-weight: 400;
-    color: var(--token-e1f0f6fc-3f48-41e1-b11f-79a5bba9c5c2, #555);
-    margin: 0;
-    letter-spacing: 0.01em;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--token-e1f0f6fc-3f48-41e1-b11f-79a5bba9c5c2, #666);
-    max-width: 480px;
-    margin: 0;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 0.5rem;
-  }
-
-  .cta-primary {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #0d0d0d);
-    color: #fff;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .cta-primary:hover {
-    opacity: 0.82;
-  }
-
-  .cta-secondary {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background: transparent;
-    color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #0d0d0d);
-    border: 1.5px solid var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #0d0d0d);
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .cta-secondary:hover {
-    opacity: 0.65;
-  }
-
-  .hero-social {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    margin-top: 0.25rem;
-    min-height: 36px;
-  }
-
-  /* Fallback links hidden visually but present for SEO and accessibility */
-  .hero-social-fallback {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .hero-name {
-      color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-    }
-    .hero-tagline,
-    .hero-description {
-      color: var(--token-e1f0f6fc-3f48-41e1-b11f-79a5bba9c5c2, #aaa);
-    }
-    .cta-primary {
-      background: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-      color: #0d0d0d;
-    }
-    .cta-secondary {
-      color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-      border-color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-    }
-  }
-
-  html.dark .hero-name {
-    color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-  }
-  html.dark .hero-tagline,
-  html.dark .hero-description {
-    color: var(--token-e1f0f6fc-3f48-41e1-b11f-79a5bba9c5c2, #aaa);
-  }
-  html.dark .cta-primary {
-    background: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-    color: #0d0d0d;
-  }
-  html.dark .cta-secondary {
-    color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-    border-color: var(--token-04d35c7a-9ed7-41b8-820c-4f9d7d04c87c, #f5f5f5);
-  }
-</style>
